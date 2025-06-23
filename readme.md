@@ -1,6 +1,6 @@
 # Spring Boot Java AI Dev (LangGraph + LangChain)
 
-This project is a backend application for Movie Ticket Booking, built using [LangGraph](https://github.com/langchain-ai/langgraph) and [LangChain](https://github.com/langchain-ai/langchain) for orchestrating code generation and tool use with LLMs. It uses an internal H2 database for storage.
+This project is a Backend AI Agent Developer for Spring Boot Apps, built using [LangGraph](https://github.com/langchain-ai/langgraph) and [LangChain](https://github.com/langchain-ai/langchain) for orchestrating code generation and tool use with LLMs.
 
 ## Features
 
