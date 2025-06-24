@@ -1,12 +1,13 @@
 # Spring Boot Java AI Dev (LangGraph + LangChain)
 
-This project is a Backend AI Agent Developer for Spring Boot Apps, built using [LangGraph](https://github.com/langchain-ai/langgraph) and [LangChain](https://github.com/langchain-ai/langchain) for orchestrating code generation and tool use with LLMs.
+This project is a Backend AI Developer for Spring Boot Apps, built using [LangGraph](https://github.com/langchain-ai/langgraph) and [LangChain](https://github.com/langchain-ai/langchain) for orchestrating code generation and tool use with LLMs.
 
 ## Features
 
 - Automated code planning and generation using LLMs
 - Modular graph-based workflow for code implementation
 - Tool integration for file operations and project structure management
+- Error handling and build process automation
 
 ## Project Structure
 
@@ -48,9 +49,6 @@ You can interact with the application through the defined nodes and tools. The m
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or features you would like to add.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgements
 This project uses LangGraph and LangChain for advanced code generation and orchestration capabilities. Special thanks to the developers of these libraries for their contributions to the open-source community.

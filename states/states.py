@@ -22,3 +22,6 @@ class CodeState(TypedDict):
     impl_done: bool
     coding_impl: dict[int, IndCodingState]
     current_implementation_step: int
+    build_success: bool
+    build_summary: str
+    cycles: int
