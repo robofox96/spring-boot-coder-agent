@@ -28,8 +28,8 @@ This project is a Backend AI Developer for Spring Boot Apps, built using [LangGr
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
-   cd <repo-name>
+   git clone https://github.com/robofox96/spring-boot-coder-agent.git
+   cd spring-boot-coder-agent
 
 2. Install the required packages:
    ```bash
