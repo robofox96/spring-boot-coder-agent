@@ -28,8 +28,8 @@ def create_or_update_file(file_name: str, file_contents: str) -> bool:
         Exception: If the file cannot be created or updated, an exception is raised with the error message.
     """
     try:
-        #If the directory does not exist, create it
-        file_name = PROJECT_PATH + "/" + file_name
+        if not file_name.startswith(PROJECT_PATH+ "/"):
+            file_name = PROJECT_PATH + "/" + file_name
         directory = os.path.dirname(file_name)
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -70,3 +70,16 @@ def show_project_structure() -> list[str]:
         return show_project_structure_util(PROJECT_PATH)
     except Exception as e:
         raise Exception(f"Could not show project structure because of the following exception: {e}")
+
+def build_project() -> str:
+    """ Build the project using Maven.
+    Returns:
+        str: The output of the Maven build command.
+    Raises:
+        Exception: If the build fails, an exception is raised with the error message.
+    """
+    import subprocess
+    result = subprocess.run(["mvn", "clean", "install"], cwd=PROJECT_PATH, capture_output=True, text=True)
+    if result.returncode != 0:
+        raise Exception(f"{result.stdout}")
+    return result.stdout

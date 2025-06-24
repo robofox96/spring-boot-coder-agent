@@ -28,6 +28,7 @@ def implement_coding_plan_node(state: CodeState):
     """
     if not state["impl_started"]:
         state["impl_started"] = True
+        state["cycles"] -= 1
 
         last_message = state["messages"][-1].content
         last_message = clean_json_string(last_message)
@@ -38,13 +39,13 @@ def implement_coding_plan_node(state: CodeState):
             state["coding_plan"] = {"steps": []}
 
         print("Coding plan loaded:", state["coding_plan"])
-
+        state["coding_impl"] = {}
         for step in state["coding_plan"]["steps"]:
-            state["coding_impl"][step["step"]] = {
+            state["coding_impl"][step["id"]] = {
                 "coding_started": False,
                 "messages": [],
-                "coding_step": step["step"],
-                "overall_requirement": state["feature_requirement"],
+                "coding_step": step["id"],
+                "overall_requirement": state["coding_plan"]["summary"],
                 "coding_done": False
             }
 
@@ -60,14 +61,17 @@ def implement_coding_plan_node(state: CodeState):
 
     return state
 
-def decide_next_step_node(state: CodeState) -> Literal["code_generator_node", "__end__"]:
+def decide_next_step_node(state: CodeState) -> Literal["code_generator_node", "builder_node", "__end__"]:
     print("In decision node")
     """
     This node decides the next step based on the current state.
     It checks if coding is done and returns the appropriate message.
     """
-    if state["impl_done"] is True:
+    if state["cycles"] <= 0:
+        state["overall_messages"].append(HumanMessage(content="Maximum cycles reached. Ending process."))
         return "__end__"
+    if state["impl_done"] is True:
+        return "builder_node"
     return "code_generator_node"
 
 # print (implement_coding_plan_node({"coding_plan": {"steps": [{"step": 1, "description": "Update pom.xml"}]},
